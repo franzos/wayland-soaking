@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <wayland-client.h>
+
+int
+main(int argc, char *argv[])
+{
+    // NULL: try to find the socket from env
+    struct wl_display *display = wl_display_connect(NULL);
+    if (!display) {
+        fprintf(stderr, "Failed to connect to Wayland display.\n");
+        return 1;
+    }
+    fprintf(stderr, "Connected to swayland!\n");
+
+    wl_display_disconnect(display);
+    return 0;
+}
+
